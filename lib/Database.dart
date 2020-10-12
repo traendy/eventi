@@ -31,7 +31,8 @@ class Database{
 
 
   Future<Event> eventFactory() {
-    return Future.delayed(Duration(seconds: 4), () =>Event("event", "event d", [new Day(DateTime.now(), "iddd", [new Room("room", "room d", "ddas", getSlots())]),
+    return Future.delayed(Duration(seconds: 4), () =>Event("event", "event d", [new Day(DateTime.now(), "iddd", [new Room("room1", "room d", "ddas", getSlots()),
+      new Room("room2", "room a", "sghs", getSlots())]),
       new Day(DateTime.now(), "afasf",
           [new Room("room", "room d", "ddas", getSlots())])]));
   }

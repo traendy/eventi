@@ -27,6 +27,7 @@ class Day{
 
   getDate(){return date;}
   getId(){return id;}
+  List<Room>getRooms() {return rooms;}
 }
 
 class Room{
@@ -40,5 +41,11 @@ class Room{
   var description = "";
   var id = "";
   var slots;
+
+  getId(){return id;}
+  String getTitle(){return title;}
+  String getDescription(){return description;}
+
+  List<Slot> getSlots(){return slots;}
 }
 

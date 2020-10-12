@@ -1,8 +1,8 @@
 import 'package:eventi/Database.dart';
 import 'package:eventi/Event.dart';
+import 'package:eventi/RoomOverViewPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 
 class EventOverViewPage extends StatefulWidget {
   EventOverViewPage({Key key, this.title}) : super(key: key);
@@ -82,6 +82,13 @@ class _EventOverViewPageState extends State<EventOverViewPage> {
     );
   }
 
+  navigateToDay(Day day) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => RoomOverViewPage(day: day.getId())));
+  }
+
   content() {
     if(loading){
       return Center(child: new CircularProgressIndicator(),);
@@ -148,14 +155,10 @@ class _EventOverViewPageState extends State<EventOverViewPage> {
                     ),
                   ),
                   MaterialButton(
-                    child: Text("answer"),
+                    child: Text("Check out Day"),
                     color: Colors.deepOrangeAccent,
                     onPressed: () =>
-                        setState(() =>
-                            controller.animateToPage(
-                                index + 1,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeOut)),
+                      navigateToDay(days[index]),
                   ),
                   Align(
                     alignment: FractionalOffset.bottomCenter,
@@ -175,5 +178,7 @@ class _EventOverViewPageState extends State<EventOverViewPage> {
           );
         });
   }
+
+
 }
 
