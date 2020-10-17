@@ -124,28 +124,16 @@ class _RoomOverViewPageState extends State<RoomOverViewPage> {
             value = (1 - (value.abs() * .2)).clamp(0.0, 1.0);
           }
           return new Center(
-            child: SizedBox(
-              height: Curves.easeOut.transform(value) *
-                  MediaQuery
-                      .of(context)
-                      .size
-                      .height *
-                  0.8,
-              width: Curves.easeOut.transform(value) *
-                  MediaQuery
-                      .of(context)
-                      .size
-                      .width *
-                  0.95,
-              child: Card(
-                color: Colors.green,
-                elevation: 6,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+            child: Column( children: <Widget>[
+               Container(width: double.infinity ,color: Colors.amber,child:
+              Column(children: <Widget>[
+              Text(rooms[index].getTitle()),
+              Text(rooms[index].getDescription()),
+              ],), ),
+             Flexible(
                 child: getSlotViews(rooms[index].getSlots()),
-              ),
             ),
-
+            ],)
           );
         });
   }

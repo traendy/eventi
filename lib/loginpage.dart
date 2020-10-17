@@ -39,10 +39,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void tryLogin() {
+    if (!loading) {
     setState(() {
       loading = true;
     });
-    database.attemptLogin(_email, _password, _eventId).then((value) => loggedIn(value));
+
+      database.attemptLogin(_email, _password, _eventId).then((value) =>
+          loggedIn(value));
+    }
   }
 
   void loggedIn(bool success){
@@ -60,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Sample"),
+        title: new Text("Login"),
       ),
       body: new Center(
         child: new Padding(
@@ -111,6 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                         "login"),
                     onPressed: () => tryLogin(),
                     color: Colors.green,
+
                   )
                 ],
               ),

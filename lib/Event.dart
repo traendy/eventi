@@ -49,3 +49,17 @@ class Room{
   List<Slot> getSlots(){return slots;}
 }
 
+class Hotel{
+  var name;
+  var address;
+  var website;
+  var phone;
+
+  Hotel(String name, String address, String website, String phone){
+    this.name = name;
+    this.address = address;
+    this.website = website;
+    this.phone = phone;
+  }
+}
+
