@@ -1,9 +1,11 @@
+import 'package:eventi/AttendeeDetailsPage.dart';
 import 'package:eventi/Database.dart';
 import 'package:eventi/Event.dart';
 import 'package:eventi/RoomOverViewPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 
 import 'Attendee.dart';
@@ -105,6 +107,15 @@ class _EventOverViewPageState extends State<EventOverViewPage> {
         context,
         MaterialPageRoute(
             builder: (context) => RoomOverViewPage(day: day.getId())));
+  }
+
+  goToAttendeeDetails(Attendee attendee) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushNamed(
+          context,
+          AttendeeDetailsPage.routeName,
+          arguments: AttendeeDetailsArguments(attendee.id));
+    });
   }
 
   content() {
@@ -305,13 +316,13 @@ class _EventOverViewPageState extends State<EventOverViewPage> {
   }
 
   getContainerForAttendee(Attendee attendee){
-    return Container(
+    return  Container(color: Colors.teal[400],
       padding: const EdgeInsets.all(8),
-      child: Column(children: <Widget>[
+      child: MaterialButton(onPressed: () => goToAttendeeDetails(attendee), child:Column(children: <Widget>[
         Text(attendee.getFirstName()),
         Text(attendee.getLastName()),
       ],),
-      color: Colors.teal[400],
-    );
+
+    ));
   }
 }

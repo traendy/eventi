@@ -1,6 +1,7 @@
 import 'package:eventi/PresentationDetails.dart';
 import 'package:eventi/loginpage.dart';
 import 'package:flutter/material.dart';
+import 'AttendeeDetailsPage.dart';
 import 'Database.dart';
 import 'TimeUtils.dart';
 
@@ -8,11 +9,16 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      routes: {
+        AttendeeDetailsPage.routeName: (context) => AttendeeDetailsPage(),
+      },
       theme: ThemeData(
+
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
